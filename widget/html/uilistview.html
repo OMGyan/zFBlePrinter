@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<style>
+			body {
+			}
+			html, body {
+				height: 100%
+			}
+			body {
+				background-color: #fff;
+				margin: 0;
+			}
+			#wrap {
+				height: 2000px;
+				position: relative;
+			}
+			#header {
+				padding-top: 20px;
+				background-color: #5082c2;
+				height: 44px;
+				position: relative;
+			}
+			#header h1 {
+				font-size: 20px;
+				height: 44px;
+				line-height: 44px;
+				margin: 0em;
+				color: #fff;
+				margin-left: 100px;
+				margin-right: 100px;
+				text-align: center;
+			}
+			#main {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-pack: center;
+			}
+			a.button {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+				height: 32px;
+				margin: 8px;
+				background-color: rgba(240, 240, 240, 1.0);
+				border-color: rgba(220, 220, 220, 1.0);
+				border-width: 2px;
+				border-style: solid;
+			}
+			a.active {
+				background-color: rgba(240, 240, 240, 0.7);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<a class="button" tapmode="active" onclick="goTestConnectUniversalPrinter()" >连接打印机</a>
+				<a class="button" tapmode="active" onclick="goTestUniversalPrinter()" >测试打印</a>
+				<a class="button" tapmode="active" onclick="fnShow()">显示按钮</a>
+				<a class="button" tapmode="active" onclick="fnClose()">关闭按钮</a>
+				<a class="button" tapmode="active" onclick="fnSetAttr()">设置列表的纵坐标和高度</a>
+				<a class="button" tapmode="active" onclick="fnGetIndex()">根据开发者自定义的唯一标识</a>
+				<a class="button" tapmode="active" onclick="fnGetDataByIndex()">根据列表项的索引获取对应的数据</a>
+				<a class="button" tapmode="active" onclick="fnSetSwipeBtns()">设置第一项侧滑显示出来的按钮</a>
+				<a class="button" tapmode="active" onclick="fnDeleteItem()">根据索引删除第三条列表的数据</a>
+				<a class="button" tapmode="active" onclick="fnUpdateItem()">根据索引更新第三条列表的数据</a>
+				<a class="button" tapmode="active" onclick="fnInsertItem()">根据索引向第一条列表插入数据</a>
+				<a class="button" tapmode="active" onclick="fnGetCount()">获取当前列表的总数据量</a>
+				<a class="button" tapmode="active" onclick="fnSetRefreshHeader()">设置下拉刷新，通过 reloadData 收起下拉刷新组件</a>
+				<a class="button" tapmode="active" onclick="fnReloadData()">reloadData刷新列表数据</a>
+				<a class="button" tapmode="active" onclick="fnAppendData()">appendData向列表末端追加数据</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript">
+	    <!--var demo;-->
+		var zFUP = null;
+		apiready = function() {
+		<!--demo = api.require('UIListView');-->
+		    zFUP = api.require('zFUniversalPrinter');
+		};
+		function fnOpen() {
+			demo.open({
+				rect : {
+					x : 0,
+					y : 250,
+					w : api.winWidth,
+					h : api.frameHeight - 250
+				},
+				data : [{
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					uid : '1001',
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}, {
+					imgPath : 'widget://image/10.png',
+					title : '标题',
+					subTitle : '子标题，说明文字',
+					remark : '备注',
+					icon : ''
+				}],
+				rightBtns : [{
+					bgColor : '#388e8e',
+					activeBgColor : '',
+					width : 70,
+					title : '按钮',
+					titleSize : 12,
+					titleColor : '#fff',
+					icon : '',
+					iconWidth : 20
+				}],
+				styles : {
+					borderColor : '#696969',
+					item : {
+						bgColor : '#AFEEEE',
+						activeBgColor : '#F5F5F5',
+						height : 55.0,
+						imgWidth : 40,
+						imgHeight : 40,
+						imgCorner : 4,
+						placeholderImg : '',
+						titleSize : 12.0,
+						titleColor : '#000',
+						subTitleSize : 12.0,
+						subTitleColor : '#000',
+						remarkColor : '#000',
+						remarkSize : 16,
+						remarkIconWidth : 30
+					}
+				},
+				fixedOn : api.frameName
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnHide() {
+			demo.hide();
+		}
+         
+			function goTestUniversalPrinter(){
+       	var printView = {printView:{
+                width:200,
+                height:120,
+                list:[
+                       {type:"image",
+                            url:"http://tools.9kbs.com/qrcode/index.php?v=http://tools.9kbs.com/scratchcard/?DU3WOLAC0P",
+                            width:80,
+                            height:80,
+                            x:60,
+                            y:10
+                        },
+                       {type:"txt",
+                            info:"DU3WOLAC0P",
+                            size:6,
+                            x:40,
+                            y:90
+                        }
+                ]
+            }};
+	        zFUP.goPrinter(printView,function(ret, err){
+				 if(ret.isPrintSuccess){
+                                      //打印成功
+                                      alert('打印成功')
+                                 }else{
+                                      //打印失败
+                                 }
+			});
+
+		}
+		function goTestConnectUniversalPrinter(){
+
+		 zFUP.initPrinter(function(ret, err){
+			    if(ret.isInit){
+                  //初始化成功,之后执行连接
+                  var param = {printerMac:"00:18:07:38:43:58",printerName:"B3_4358"};
+                 zFUP.goConnectPrinter(param,function(ret, err){
+			          	 if(ret.isConnectSuccess){
+                               //连接成功,之后执行打印操作
+                              alert(ret.isConnectSuccess);
+                         }else{
+                            if(ret.code==0){
+                                  //没有配对打印机
+                            }else{
+                                 //连接失败
+                            }
+                         }
+		     	});
+                }else{
+                    if(ret.code==0){
+                       //设备不支持蓝牙功能
+                    }else{
+                       //蓝牙没有开启
+                    }
+                }
+			});
+		} 
+		 
+		function fnShow() {
+			demo.show();
+		}
+
+		function fnClose() {
+			demo.close();
+		}
+
+		function fnSetAttr() {
+			demo.setAttr({
+				y : 200,
+				h : 200
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnGetIndex() {
+			demo.getIndex({
+				key : 'uid',
+				value : '1001'
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnGetDataByIndex() {
+			demo.getDataByIndex({
+				index : 0
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnSetSwipeBtns() {
+			demo.setSwipeBtns({
+				index : 0,
+				btns : [{
+					bgColor : '#388e8e',
+					activeBgColor : '',
+					width : 70,
+					title : '修改',
+					titleSize : 12,
+					titleColor : '#fff',
+					icon : '',
+					iconWidth : 20
+				}]
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnReloadData() {
+			demo.reloadData({
+				data : [{
+					imgPath : 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+					title : '新标题',
+					subTitle : '新子标题',
+					remark : '新备注',
+					icon : ''
+				}]
+			}, function(ret) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnDeleteItem() {
+			demo.deleteItem({
+				index : 2
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnUpdateItem() {
+			demo.updateItem({
+				index : 2,
+				data : {
+					imgPath : 'http://img1.3lian.com/gif/more/11/201206/a5194ba8c27b17def4a7c5495aba5e32.jpg',
+					title : '刷新标题',
+					subTitle : '刷新子标题',
+					remark : '刷新备注'
+				}
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnInsertItem() {
+			demo.insertItem({
+				index : 0,
+				data : {
+					imgPath : 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg',
+					title : '12:00',
+					subTitle : 'APICloud粉丝互动会',
+					remark : '完成'
+				}
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnAppendData() {
+			demo.appendData({
+				data : [{
+					imgPath : 'http://d.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b29a788c209d162d9f2d3c922.jpg',
+					title : '新增标题',
+					subTitle : '新增子标题',
+					remark : '新增备注'
+				}]
+			}, function(ret, err) {
+				if (ret) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+
+		function fnGetCount() {
+			demo.getCount(function(ret) {
+				alert(JSON.stringify(ret));
+			});
+		}
+
+		function fnSetRefreshHeader() {
+			demo.setRefreshHeader({
+				loadingImg : 'widget://image/10.png',
+				bgColor : '#F5F5F5',
+				textColor : '#8E8E8E',
+				textDown : '下拉可以刷新...',
+				textUp : '松开开始刷新...',
+				showTime : true
+			}, function(ret, err) {
+				if (ret) {
+				} else {
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+	</script>
+</html>

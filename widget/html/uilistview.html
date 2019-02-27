@@ -61,6 +61,10 @@
 	<body>
 		<div id="wrap">
 			<div id="main">
+			  <div class='itemtitle'>获取NFC标签卡id</div>
+            <div class="clickbtn" tapmode="active" onclick="getNFCId()" >点击NFC获取标签卡id</div>
+            <div style="font-size:0.8em;">id为:</div>
+            <div id="activity_result2" style="width:100%;word-wrap: break-word;word-break: normal;"></div><br><br>
 				<a class="button" tapmode="active" onclick="goTestConnectUniversalPrinter()" >连接打印机</a>
 				<a class="button" tapmode="active" onclick="goTestUniversalPrinter()" >测试打印</a>
 				<a class="button" tapmode="active" onclick="fnShow()">显示按钮</a>
@@ -83,9 +87,11 @@
 	<script type="text/javascript">
 	    <!--var demo;-->
 		var zFUP = null;
+		 var zFN = null;
 		apiready = function() {
 		<!--demo = api.require('UIListView');-->
 		    zFUP = api.require('zFUniversalPrinter');
+			 zFN = api.require('zFNfc');
 		};
 		function fnOpen() {
 			demo.open({
@@ -214,6 +220,14 @@
 		function fnHide() {
 			demo.hide();
 		}
+		
+		
+		  function getNFCId(){
+	        zFN.getNfcIdCode(function(ret,err){
+				document.getElementById("activity_result2").innerHTML = JSON.stringify(ret);
+			});
+        }
+		
          
 			function goTestUniversalPrinter(){
        	var printView = {printView:{

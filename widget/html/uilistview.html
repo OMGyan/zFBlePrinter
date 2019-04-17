@@ -264,7 +264,9 @@
 		 zFUP.initPrinter(function(ret, err){
 			    if(ret.isInit){
                   //初始化成功,之后执行连接
-                  var param = {printerMac:"00:18:07:38:43:58",printerName:"B3_4358"};
+                //  var param = {printerMac:"00:18:07:38:43:58",printerName:"B3_4358"};
+				   var param = {printerMac:"00:40:06:55:80:42",printerName:"B3_8042"};
+
                  zFUP.goConnectPrinter(param,function(ret, err){
 			          	 if(ret.isConnectSuccess){
                                //连接成功,之后执行打印操作

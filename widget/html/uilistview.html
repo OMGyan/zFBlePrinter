@@ -90,7 +90,7 @@
 		 var zFN = null;
 		apiready = function() {
 		<!--demo = api.require('UIListView');-->
-		    zFUP = api.require('zFUniversalPrinter');
+		    zFUP = api.require('KBSUniversalPrinter');
 			 zFN = api.require('zFNfc');
 		};
 		function fnOpen() {
@@ -231,24 +231,24 @@
          
 			function goTestUniversalPrinter(){
        	var printView = {printView:{
-                width:200,
-                height:120,
-                list:[
-                       {type:"image",
-                            url:"http://tools.9kbs.com/qrcode/index.php?v=http://tools.9kbs.com/scratchcard/?DU3WOLAC0P",
-                            width:80,
-                            height:80,
-                            x:60,
-                            y:10
-                        },
-                       {type:"txt",
-                            info:"DU3WOLAC0P",
-                            size:6,
-                            x:40,
-                            y:90
-                        }
-                ]
-            }};
+	                width:240,
+	                height:160,
+	                list:[
+	                       {type:"image",
+	                            url:"http://tools.9kbs.com/qrcode/index.php?v=http://tools.9kbs.com/scratchcard/?DU3WOLAC0P",
+	                            width:110,
+	                            height:110,
+	                            x:65,
+	                            y:10
+	                        },
+	                       {type:"txt",
+	                            info:"DU3WOLAC0P",
+	                            size:8,
+	                            x:42,
+	                            y:118
+	                        }
+	                ]
+	            }};
 	        zFUP.goPrinter(printView,function(ret, err){
 				 if(ret.isPrintSuccess){
                                       //打印成功
